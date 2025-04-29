@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <style>
+        /* Direct CSS if you don't want external login.css */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f5;
+        }
+
+        .form-container {
+            background: white;
+            padding: 50px 50px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .form-container h3 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        input[type="button"], .back-button {
+            width: 100%;
+            background: black;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        input[type="button"]:hover, .back-button:hover {
+            background: #333;
+        }
+
+        #output {
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        #iframe-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container" id="formBox">
+        <h3>Login to Your Account</h3>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+
+        <div style="margin: 10px 0; text-align: left;">
+            <input type="checkbox" id="terms">
+            <label for="terms" style="display: inline;">I agree to terms & conditions</label>
+        </div>
+
+        <input type="button" id="showBtn" value="Log In">
+
+        <!-- BACK BUTTON -->
+        <button class="back-button" onclick="goBack()">Back</button>
+
+        <div id="output">
+            <p id="outEmail"></p>
+            <p id="outPassword"></p>
+            <p id="outCheckbox"></p>
+        </div>
+
+        <div id="iframe-container">
+            <iframe src=""></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("showBtn").onclick = function () {
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let isChecked = document.getElementById("terms").checked;
+
+            if (email === "") {
+                alert("Email is Empty!!!!");
+                return;
+            }
+
+            if (password === "") {
+                alert("Password is Empty!!!!");
+                return;
+            }
+
+            if (!isChecked) {
+                alert("Please agree to the terms & conditions!");
+                return;
+            }
+
+            if (email === "aces@gmail.com" && password === "123456") {
+                window.location.href = "home.html";
+            } else {
+                alert("Wrong credentials!");
+            }
+        };
+
+        function goBack() {
+            window.location.href = "index.html"; // Go back to index.html
+        }
+    </script>
+
+</body>
+</html>
